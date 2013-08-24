@@ -115,10 +115,15 @@ public class SimpleDusts {
     	}
     	
     	// 1 tin + 2 copper dusts = 3 bronze dusts
-//    	ItemStack dustCopperStack = new ItemStack(dustCopper);
-    	GameRegistry.addShapelessRecipe(new ItemStack(dustBronze, 3),
-    					"dustCopper", "dustCopper",
-    					"dustCopper", "dustTin");
+    	if (! OreDictionary.getOres("dustCopper").isEmpty() && ! OreDictionary.getOres("dustTin").isEmpty() )
+    	{
+    		System.out.println("Tin and copper dusts found");
+    		ItemStack dustCopperStack = new ItemStack(dustCopper);
+    		GameRegistry.addShapelessRecipe(new ItemStack(dustBronze, 3),
+    				dustCopperStack, dustCopperStack,
+    				new ItemStack(dustTin));
+    	} else
+    		System.out.println("No dusts registered?!");
     	
         // Mythril
     	if (! OreDictionary.getOres("ingotMythril").isEmpty())
