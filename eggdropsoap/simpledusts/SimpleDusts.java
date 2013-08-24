@@ -114,11 +114,11 @@ public class SimpleDusts {
     		FurnaceRecipes.smelting().addSmelting(dustBronze.itemID, 0, OreDictionary.getOres("ingotBronze").get(0), 0.3f);
     	}
     	
-    	// 1 tin + 3 copper dusts = 4 bronze dusts
-    	ItemStack dustCopperStack = new ItemStack(dustCopper);
-    	GameRegistry.addShapelessRecipe(new ItemStack(dustBronze, 4),
-    					dustCopperStack, dustCopperStack,
-    					dustCopperStack, new ItemStack(dustTin));
+    	// 1 tin + 2 copper dusts = 3 bronze dusts
+//    	ItemStack dustCopperStack = new ItemStack(dustCopper);
+    	GameRegistry.addShapelessRecipe(new ItemStack(dustBronze, 3),
+    					"dustCopper", "dustCopper",
+    					"dustCopper", "dustTin");
     	
         // Mythril
     	if (! OreDictionary.getOres("ingotMythril").isEmpty())
