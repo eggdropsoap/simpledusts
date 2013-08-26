@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -17,7 +18,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid="SimpleDusts", name="Simple Dusts", version="0.1.0")
+@Mod(modid="SimpleDusts", name="Simple Dusts", version="0.1.2")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
 public class SimpleDusts {
 
@@ -118,10 +119,12 @@ public class SimpleDusts {
     	if (! OreDictionary.getOres("dustCopper").isEmpty() && ! OreDictionary.getOres("dustTin").isEmpty() )
     	{
     		System.out.println("Tin and copper dusts found");
-    		ItemStack dustCopperStack = new ItemStack(dustCopper);
-    		GameRegistry.addShapelessRecipe(new ItemStack(dustBronze, 3),
-    				dustCopperStack, dustCopperStack,
-    				new ItemStack(dustTin));
+//    		ItemStack dustCopperStack = new ItemStack(dustCopper);
+    		GameRegistry.addRecipe(new ShapelessOreRecipe(
+    				new ItemStack(dustBronze, 3),
+    				new Object[] {
+    					"dustCopper", "dustCopper", "dustTin"
+    				} ));
     	} else
     		System.out.println("No dusts registered?!");
     	
